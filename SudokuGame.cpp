@@ -7,8 +7,7 @@ using namespace std;
 #define N 9
 bool isGridSafe(int grid[N][N], int row, int col, int num);
 bool isEmptyLocation(int grid[N][N], int &row, int &col);
-/* assign values to all the zero (not assigned) values for Sudoku solution
-*/
+
 bool SolveSudoku(int grid[N][N])
 {
    int row, col;
@@ -26,7 +25,7 @@ bool SolveSudoku(int grid[N][N])
    }
    return false;
 }
-/* Check for entries that don't have a value. */
+//Check for empty location.
 bool isEmptyLocation(int grid[N][N], int &row, int &col)
 {
    for (row = 0; row < N; row++)
@@ -51,8 +50,8 @@ bool UsedInCol(int grid[N][N], int pcol, int number)
    {
        if (grid[row][pcol] == number)
            return true;
-		else 
-   			return false;
+	else 
+   	   return false;
    }
 }
 //Check if the entry used already in the grid box
@@ -71,7 +70,7 @@ bool isGridSafe(int grid[N][N], int prow, int pcol, int number)
    return !UsedInRow(grid, prow, number) && !UsedInCol(grid, pcol, number) &&
           !UsedInBox(grid, prow - prow % 3 , pcol - pcol % 3, number);
 }
-/* print result  */
+//Result
 void printResult(int finalgrid[N][N])
 {
    for (int row = 0; row < N; row++)
@@ -81,7 +80,7 @@ void printResult(int finalgrid[N][N])
        cout<<endl;
    }
 }
-/* Main */
+
 int main()
 {
    int grid[N][N] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
