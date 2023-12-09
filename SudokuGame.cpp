@@ -1,7 +1,4 @@
 #include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
 using namespace std;
 #define empty 0
 #define N 9
@@ -34,8 +31,7 @@ bool isEmptyLocation(int grid[N][N], int &row, int &col)
                return true;
    return false;
 }
-/* Returns whether the assigned entry n in the particular row matches
-  the given number num. */
+//Check whether the given number is safe to place in the row.
 bool UsedInRow(int grid[N][N], int prow, int number)
 {
    for (int col = 0; col < N; col++)
@@ -43,7 +39,7 @@ bool UsedInRow(int grid[N][N], int prow, int number)
            return true;
    return false;
 }
-/* Returns true if the number num matches any number in the column */
+//Check whether the given number is safe to place in the column.
 bool UsedInCol(int grid[N][N], int pcol, int number)
 {
    for (int row = 0; row < N; row++)
@@ -54,7 +50,7 @@ bool UsedInCol(int grid[N][N], int pcol, int number)
    	   return false;
    }
 }
-//Check if the entry used already in the grid box
+//Check whether the given number is safe to place in the grid box.
 bool UsedInBox(int grid[N][N], int boxBeginRow, int boxBeginCol, int number)
 {
    bool tf = false;
@@ -64,7 +60,7 @@ bool UsedInBox(int grid[N][N], int boxBeginRow, int boxBeginCol, int number)
                tf = true;
    return tf;
 }
-/* Checks if num can be assigned to a given prow,pcol location. */
+//Check whether the given number is safe to place in the particular cell.
 bool isGridSafe(int grid[N][N], int prow, int pcol, int number)
 {
    return !UsedInRow(grid, prow, number) && !UsedInCol(grid, pcol, number) &&
